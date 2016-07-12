@@ -1,0 +1,26 @@
+int idMain ( ) {
+
+    int idB;
+    int idA;
+    char idC;
+    char idD;
+
+	read idC;
+	read idD;
+
+	idB = 9+1+7;
+	idA = 8+9;
+    
+	if(idC == idD)
+	{
+		print idA;
+	}
+    else
+    {
+    	print idD;
+    	print idC;
+    }
+    //read idB;
+    //print idB ;
+
+}

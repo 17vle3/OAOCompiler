@@ -1,0 +1,19 @@
+# Compiler Final Project
+
+作者 : 楊凱州
+
+## 執行環境
+Ubuntu 14.04 with gcc 4.8.2
+
+## 執行方式
+1. make
+2. ./ccompiler <filename>
+
+## 實作方式
+主要功能皆實作於 ccompiler.y，我目前採用了兩種方法來進行codegen，對於 declartion 類型（type非為 tree者為之）的會直接在 bison bottom up 的過程中進行 codegen，而其餘則是建立語法樹，先在 bottom up 的過程中將每一個樹節點串接起來，完成後再 top-down 去遞迴的遍歷這顆語法樹產生 mips code。
+
+## 備註
+1.由於該語法樹在 operation 上屬於右結合，故本編譯器配合其邏輯實作之，比如以下情形：
+	1+3-5 = (1+(3-5)) = -1
+2.test 資料夾中存放了通過測試的實驗碼，可以產生出正確的mips code。
+3.function 功能尚未實作，請勿將 function 的宣告或使用放在測試程式碼，會產生錯誤的mips code。
