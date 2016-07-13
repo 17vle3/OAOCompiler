@@ -225,7 +225,6 @@ DeclList
 DeclListP 
 	: Type ID Decl {
 
-		//cout << "[TEST]98989898989898989898998" << endl;
 		$$ = new_ast(9528,$3,NULL,*$2,"DeclListP -> Type ID");
 		//ok, we already have decl information from $3
 		
@@ -247,7 +246,6 @@ DeclListP
 			$$->l->id = new string(*$2);
 			$$->l->sym = $$->sym;
 		}
-		//cout << "[TESTEEEEEEEE]98989898989898989898998" << endl;
 	}
 	;
 
@@ -264,7 +262,6 @@ Decl
 VarDecl /* DONE */
 	: Type ID VarDeclP {
 
-		//cout <<endl<<endl<< "87878787878787877888"  << endl << endl <<endl;
 		$$ = new_ast(9531,$3,NULL,*$2,"VarDecl-> Type ID varDeclP");
 		$$->sym = new symbol;
 		$$->sym->type = $1;
@@ -789,9 +786,9 @@ string loadId(ast_val value,string& append_to)
 		 	res_tp_reg = value.id;
 			break;
 		
-		case 5: //RECURSIVE function, but I think it might  occur for my ast processing.
+		case 5: //RECURSIVE function. NOT ALLOWED IN INPUT,so...
 	
-			cout << "[WTF?]: A recurrsive , How can it be !" << endl;
+			cout << "[WTF?]: A recurrsive , That's not approve !" << endl;
 			exit(1);
 		
 			break;
@@ -1197,14 +1194,6 @@ ast_val evaluate_exp(ast* t)
 		case 'G':/* Stmt -> If expr stmt else stmt */
 		
 			if_else(t);
-			//cout <<"[IF]" <<endl;
-			// ls = *(t->l->debug);
-			// rs = *(t->r->debug);
-			// stmt = *(t->stmt->debug);
-			
-			//cout <<"[87878787]" << ls << endl;
-			//cout <<"[87878787]" << rs << endl;
-			//cout <<"[87878787]" << stmt << endl;
 			
 			break;
 		case 'K':/* Block -> varList StmtList */
@@ -1301,9 +1290,6 @@ string getReg(char c) {
 		case 'a':
 			for(i=0;i<4;i++)
 			{
-			
-				//cout << endl << endl<< "87878787878787878" << endl << endl;
-				//cout << "Value of GODDAMN IT RA = " << cout << mips_reg.a[i] << endl;
 				if(mips_reg.a[i] == 0)
 				{
 					mips_reg.a[i] = 1;
